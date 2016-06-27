@@ -1,6 +1,13 @@
 
 //http://codepen.io/Craigtut/pen/dIfzv
 
+/* HTML EXAMPLE
+
+<a class="btn-link ripple" data-ripple-color="#c1c1c1" href="#" data-content-src="about-someone">ABOUT SOMEONE</a>
+
+
+*/
+
 .btn-link.ripple
 {
   position: relative;
