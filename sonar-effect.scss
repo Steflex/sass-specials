@@ -1,0 +1,225 @@
+
+/* based on http://codepen.io/thith/pen/vEOObL */
+
+
+/* SONAR WAVE */
+
+
+/* Prevent scrollbars to appear when waves go out of bound */
+.sonar-wrapper {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* The circle */
+.sonar-emitter {
+  position: relative;
+  margin: 32px auto;
+  width: 160px;
+  height: 160px;
+  border-radius: 9999px;
+  background-color: HSL(45,100%,50%);
+}
+
+.sonar-emitter.with-icon
+{
+  width: 25px;
+  height:25px;
+  border-radius: 9999px;
+  background-color: white;
+
+
+}
+
+.sonar-emitter.with-icon a
+{
+  color: #5e5e5e;
+}
+
+.sonar-emitter.with-icon a:hover
+{
+  color: #232323;
+}
+
+.sonar-emitter:hover .sonar-wave {
+//  animation: sonarWave 2s linear forwards;
+}
+
+.sonar-emitter.with-icon:hover .sonar-wave {
+//  animation: sonarWave 1.3s linear forwards;
+}
+
+/* the 'wave', same shape and size as its parent */
+.sonar-wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background-color: HSL(45,100%,50%);
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.sonar-emitter.with-icon .sonar-wave {
+  background-color: white;
+}
+
+/*
+  Animate!
+  NOTE: add browser prefixes where needed.
+*/
+.sonar-wave {
+//   animation: sonarWave 2s linear infinite;
+}
+
+.sonar-wave.infinite {
+  animation: sonarWave 2s linear infinite;
+}
+
+@keyframes sonarWave {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+
+
+/* SONAR STATIC */
+
+/*
+example "call"
+
+<div class="icon-wrap icon-effect">
+      <div class="icon">Settings</div>
+  </div>
+
+*/
+
+.icon-wrap {
+  text-align: center;
+  margin: 0 auto;
+  padding: 2em 0 3em;
+
+}
+
+.icon {
+  display: inline-block;
+  font-size: 0px;
+  cursor: pointer;
+  margin: 15px 30px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  color: #fff;
+}
+
+.icon:after {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}
+
+.icon:before {
+  background-color: #cccccc;
+}
+
+/* Sonar Effect */
+.icon-effect .icon {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-transition: -webkit-transform ease-out 0.1s, background .5s;
+  -moz-transition: -moz-transform ease-out 0.1s, background .5s;
+  transition: transform ease-out 0.1s, background .5s;
+}
+
+.icon-effect .icon:after {
+
+  z-index: -1;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+  -moz-transform: scale(0.9);
+  -ms-transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+
+.icon-effect .icon:hover {
+  background: rgba(255,255,255,0.1);
+  /*-webkit-transform: scale(0.93);*/
+  /*-moz-transform: scale(0.93);*/
+  /*-ms-transform: scale(0.93);*/
+  /*transform: scale(0.93);*/
+  color: #fff;
+}
+
+.icon-effect .icon:hover {
+  -webkit-animation: sonarEffect 1.3s ease-out 75ms forwards;
+  -moz-animation: sonarEffect 1.3s ease-out 75ms forwards;
+  animation: sonarEffect 1.3s ease-out 75ms forwards;
+  opacity: 0.7;
+}
+
+
+/* Chrome, mobile browser support  */
+@-webkit-keyframes sonarEffect {
+  0% {
+    /*opacity: 0.3;*/
+  }
+  40% {
+    /*opacity: 0.5;*/
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    /*-webkit-transform: scale(1.5);*/
+    /*opacity: 0;*/
+  }
+}
+
+/* Mozilla browser support*/
+@-moz-keyframes sonarEffect {
+  0% {
+    opacity: 0.3;
+  }
+  40% {
+    opacity: 0.5;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    -moz-transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+
+@keyframes sonarEffect {
+  0% {
+    /*opacity: 0.3;*/
+  }
+  40% {
+    /*opacity: 0.5;*/
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1), 0 0 10px 10px #eea3a3, 0 0 0 10px rgba(255, 255, 255, 0.5);
+    /*transform: scale(1.5);*/
+    /*opacity: 0;*/
+  }
+}
